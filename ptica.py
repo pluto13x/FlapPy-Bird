@@ -8,22 +8,27 @@ narandzasta = (255, 153, 51)
 a = 20
 b = 20
 
+image = pygame.image.load('assets/cvrle.png')
+scale = 4
+SIZE = (25 * scale, 19 * scale)
+image = pygame.transform.scale(image, SIZE)
 
 class Ptica:
     def __init__(self, _x, _y, _vsp, _radius, _gravity):
         self.x = _x
         self.y = _y
         self.vsp = _vsp
-        self.color = (255,255,0)
+        self.color = (255,0,0)
         self.radius = _radius
         self.center = [self.x, self.y]
         self.gravity = _gravity
 
-
     def draw(self, screen):
-        pygame.draw.polygon(screen, narandzasta, ((self.x + self.radius - 5, self.y - a / 2), (self.x + self.radius + b, self.y), (self.x + self.radius - 5, self.y + a / 2)))
-        pygame.draw.circle(screen, self.color, self.center, self.radius)
-        pygame.draw.circle(screen, crna, [self.x + self.radius / 2, self.y - self.radius / 3], self.radius / 4)
+        image.convert_alpha()
+        #pygame.draw.polygon(screen, narandzasta, ((self.x + self.radius - 5, self.y - a / 2), (self.x + self.radius + b, self.y), (self.x + self.radius - 5, self.y + a / 2)))
+        #pygame.draw.circle(screen, self.color, self.center, self.radius)
+        #pygame.draw.circle(screen, crna, [self.x + self.radius / 2, self.y - self.radius / 3], self.radius / 4)
+        screen.blit(image, (self.x - 19 * scale / 2, self.y - 19 * scale / 2))
 
     def update(self, dt):
         # Update pozicije po dugmicima
