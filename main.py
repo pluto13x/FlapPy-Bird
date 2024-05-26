@@ -72,6 +72,25 @@ high = (int)(file.read())
 file.close()
 #endregion
 
+def reset():
+    global cvrle, skokf, skaci, rez, stubic, rand, rand2, hsp, ubrzanje
+
+    skokf = 0
+    cvrle.gravity = 0 
+    skaci = 1
+    cvrle.vsp = jump
+    cvrle.update(dt)
+    rez = 0
+    ubrzanje = 0
+    
+    cvrle = Ptica(150, screenHeight/2, jump, r, 0)
+
+    rand = random.randint(a, screenHeight - a)
+    rand2 = random.randint(a, screenHeight - a)
+    hsp = 0
+    stubic = [Stub(screenWidth + b / 2, rand, a, b, boja1, boja2), Stub(screenWidth + b / 2 + screenWidth / 2 + b / 2, rand2, a, b, boja1, boja2)]
+
+
 while running:
     #region izadji iz igrice
     for event in pygame.event.get():
@@ -86,7 +105,7 @@ while running:
         print(cvrle.gravity)      
         #region setup
         screen.fill(nebo)
-        oblak()
+        oblak(screen)
         dt = clock.tick(60)
         keys=pygame.key.get_pressed()
         #endregion
@@ -144,7 +163,7 @@ while running:
     #region gameover
     else:
         keys=pygame.key.get_pressed()
-        gameOver(screen, screenWidth, screenHeight)
+        cvrle.vsp, cvrle.gravity = gameOver(screen, screenWidth, screenHeight, crna)
         if keys[pygame.K_r]:
             reset()
             gameover = False

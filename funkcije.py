@@ -48,25 +48,7 @@ def crtanje(cvrle, screen, bojaPozadine):
     screen.fill(bojaPozadine)
     cvrle.draw(screen)
 
-def reset():
-    cvrle, skokf, skaci, rez, stubic, rand, rand2, hsp, ubrzanje
-
-    skokf = 0
-    cvrle.gravity = 0 
-    skaci = 1
-    cvrle.vsp = jump
-    cvrle.update(dt)
-    rez = 0
-    ubrzanje = 0
-    
-    cvrle = Ptica(150, screenHeight/2, jump, r, 0)
-
-    rand = random.randint(a, screenHeight - a)
-    rand2 = random.randint(a, screenHeight - a)
-    hsp = 0
-    stubic = [Stub(screenWidth + b / 2, rand, a, b, boja1, boja2), Stub(screenWidth + b / 2 + screenWidth / 2 + b / 2, rand2, a, b, boja1, boja2)]
-
-def oblak():
+def oblak(screen):
     scale = 4
 
     image = pygame.image.load('assets/oblak1.png')
@@ -93,5 +75,3 @@ def oblak():
     SIZE = (32 * scale, 32 * scale)
     image = pygame.transform.scale(image, SIZE)
     screen.blit(image, (50, 500))
-
-#endregion
