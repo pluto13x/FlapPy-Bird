@@ -13,4 +13,4 @@
 - Igrica računa i pamti high score
 
 ### Maturski rad
-Da vidite maturski rad napisan o ovom projektu, pogledajte FlapPy Bird.pdfs
+Da vidite maturski rad napisan o ovom projektu, pogledajte FlapPy Bird.pdf
