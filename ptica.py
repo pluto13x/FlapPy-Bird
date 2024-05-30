@@ -18,7 +18,7 @@ class Ptica:
         self.x = _x
         self.y = _y
         self.vsp = _vsp
-        self.color = (255,0,0)
+        #self.color = (255,0,0)
         self.radius = _radius
         self.center = [self.x, self.y]
         self.gravity = _gravity

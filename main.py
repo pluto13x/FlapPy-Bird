@@ -112,43 +112,42 @@ while running:
 
         #region ptica movement    
         if keys[pygame.K_SPACE] and cvrle.gravity == 0: #kad tek krece igrica           
-            hsp = 5
-            ubrzanje = 0.01
+            hsp = 5 #brzina kojom ptica skače na gore
+            ubrzanje = 0.01 #ubrzanje padanja
 
         if keys[pygame.K_SPACE] and skaci == 1: #kad skoci
             cvrle.gravity = gr
-            skaci = 0
-            skokf = 10 #koliko frameova da ide na gore
+            skaci = 0 #sprecava da ptica nastavi da skace ako se drzi space
+            skokf = 10 #koliko frameova će da ide na gore pre nego što krene da pada
             pygame.mixer.Sound.play(whoosh)
-        elif keys[pygame.K_SPACE] == False: #kad pusti space
-            skaci = 1
+        elif keys[pygame.K_SPACE] == False: #kad igrac pusti space
+            skaci = 1 #dozvoli da moze da skoci opet
 
         if (skokf > 0): #skok animacija
             cvrle.update(dt)
             skokf -= 1
         else:
-            cvrle.gravity += ubrzanje
+            cvrle.gravity += ubrzanje #ubrzavanje pada
         #endregion
 
         #region stubic
         for i in range(0,2): 
-            if stubic[i].nestao(): #pravi novi stubic
-                rand = random.randint(a, screenHeight - a)
+            if stubic[i].nestao(): #ako stub nestane sa ekrana, napravi novi
+                rand = random.randint(a, screenHeight - a) #novi stubic ima nasumicnu visinu rupe
                 stubic[i] = Stub(screenWidth + stubic[i].b / 2, rand, a, b, boja1, boja2)
             if cvrle.prosao(stubic[i]): #broji score
                 rez += 1
-                stubic[i].gotov = True
+                stubic[i].gotov = True #ako je ptica presla stub, vise ne mora da se gleda kolizija za njega
                 pygame.mixer.Sound.play(ping)
-            if stubic[i].gotov == False: #collision
+            if stubic[i].gotov == False: #kolizija
                 if sudar(cvrle, stubic[i]):
                     gameover = True
                     pygame.mixer.Sound.play(boom)
-                    if rez > high:
+                    if rez > high: #da li je napravljen novi najbolji rezultat
                         high = rez
             stubic[i].draw(screen)
             stubic[i].pomeri(hsp)    
         #endregion       
-
         cvrle.draw(screen)
         cvrle.gravitacija(dt) 
         ispis(rez, crna, screen, screenWidth)

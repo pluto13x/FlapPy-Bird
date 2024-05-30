@@ -34,13 +34,14 @@ def gameOver(screen, screenWidth, screenHeight, boja):
 
 def sudar(tica, cev):
     res = False
-    r = tica.radius * sqrt2 / 2
-    c = pygame.Vector2(tica.x, tica.y)
-    vrh = pygame.Rect(cev.x - cev.b / 2, 0, cev.b, cev.a1)
-    pod = pygame.Rect(cev.x - cev.b / 2, cev.y + cev.a / 2, cev.b, cev.a2)
-    if c.x + r >= vrh.left and c.y - r <= vrh.bottom:
+    r = tica.radius * sqrt2 / 2 #Pticin hitbox je kao kvadrat oko kog je okrugla ptica opisana
+    c = pygame.Vector2(tica.x, tica.y) #centar ptice
+    vrh = pygame.Rect(cev.x - cev.b / 2, 0, cev.b, cev.a1) #gornja cev
+    pod = pygame.Rect(cev.x - cev.b / 2, cev.y + cev.a / 2, \
+                      cev.b, cev.a2) #donja cev
+    if c.x + r >= vrh.left and c.y - r <= vrh.bottom: #gornja kolizija
         res = True
-    if c.x + r >= pod.left and c.y + r >= pod.top:
+    if c.x + r >= pod.left and c.y + r >= pod.top: #donja kolizija
         res = True
     return res
 
