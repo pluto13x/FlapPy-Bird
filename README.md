@@ -12,3 +12,5 @@
 - Ptica ubrzava dok pada
 - Igrica računa i pamti high score
 
+### Maturski rad
+Da vidite maturski rad napisan o ovom projektu, pogledajte FlapPy Bird.pdf
